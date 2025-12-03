@@ -43,9 +43,9 @@ jobs:
           cd gitops
     
           if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i '' "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
+            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" deployment.yaml
           else
-            sed -i "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
+            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" deployment.yaml
           fi
           
           # Commit all changes
@@ -54,7 +54,7 @@ jobs:
           git add deployment.yaml
           git commit -m "Update image to ${{ github.sha }}"
           
-          # Push....
+          # Push..
           git push -f https://${GIT_TOKEN}@github.com/mikeybeezy/grade-api-gitops.git main
 
 
