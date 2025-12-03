@@ -6,9 +6,12 @@ WORKDIR /app
 COPY src/package*.json ./
 RUN npm install
 
-# Copy source code
+# Copy source code...ee
 COPY src/ ./
 
 EXPOSE 3000
 
 CMD ["node", "app.js"]
+
+
+
