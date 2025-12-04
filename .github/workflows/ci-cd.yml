@@ -43,9 +43,9 @@ jobs:
           cd gitops
     
           if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" deployment.yaml
+            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" applications/deployment.yaml
           else
-            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" deployment.yaml
+            sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" applications/deployment.yaml
           fi
           
           cat deployment.yaml
