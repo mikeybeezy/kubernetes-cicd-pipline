@@ -47,8 +47,6 @@ jobs:
           else
             sed -E -i '' "s|(image: ghcr.io/[[:alnum:]/_-]+):[[:alnum:]._-]+|\\1:${{ github.sha }}|" applications/deployment.yaml
           fi
-          
-          cat deployment.yaml
 
           # Commit all changes.
           git config --global user.name "GitHub Actions"
