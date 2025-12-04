@@ -49,14 +49,14 @@ jobs:
           fi
           
           cat deployment.yaml
-          
+
           # Commit all changes.
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add deployment.yaml
           git commit -m "Update image to ${{ github.sha }}"
           
-          # Push..
+          # Push...
           git push -f https://${GIT_TOKEN}@github.com/mikeybeezy/grade-api-gitops.git main
 
 
